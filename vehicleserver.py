@@ -6,7 +6,7 @@ import sys
 import time
 
 from foreignvehicles import ForeignVehicles
-from gui import Gui
+from vehicleserver.gui import Gui
 from objectmaker import ObjectMaker
 from tkinter import Tk
 from vehicle import Vehicle
@@ -21,7 +21,7 @@ class VehicleServer:
     ALL_IP = ""
     ALL_PORT = 20001
     ALL_ADDR = (ALL_IP, ALL_PORT)
-    INFO_FILENAME = "/home/pi/Desktop/vehicle-info.txt"
+    INFO_FILENAME = "/home/pi/Desktop/vehicleinfo.txt"
     BUFFER_SIZE = 1024
     
     def __init__(self, srvAddr, allAddr, new,

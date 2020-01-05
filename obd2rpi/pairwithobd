@@ -1,7 +1,7 @@
 #!/usr/bin/expect -f
 
-set address [exec head -1 /home/pi/Desktop/vehicle-info.txt]
-set pin [exec head -2 /home/pi/Desktop/vehicle-info.txt | tail -1]
+set address [exec head -1 /home/pi/Desktop/v2v/vehicleinfo.txt]
+set pin [exec head -2 /home/pi/Desktop/v2v/vehicleinfo.txt | tail -1]
 set prompt "#"
 
 spawn bluetoothctl
@@ -27,7 +27,7 @@ send -- "scan on\n"
 expect "started"
 expect $prompt
 
-sleep 15
+sleep 20
 
 send -- "scan off\n"
 expect "stopped"
