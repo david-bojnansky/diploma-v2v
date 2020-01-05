@@ -125,6 +125,7 @@ class MyVehicle:
             "brand": self.brand,
             "model": self.model,
             "vrn": self.vrn,
+            "rotates": self.rotates,
             "direction": self.direction,
             "directionAsText": self.directionAsText,
             "speed": self.speed,
@@ -134,7 +135,7 @@ class MyVehicle:
         
         if forServer:
             data.update({
-                "rotates": self.rotates,
+                #"rotates": self.rotates,
                 "gear": self.gear,
             })
         

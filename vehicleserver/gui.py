@@ -51,7 +51,7 @@ class Gui(Frame):
         table.grid(row=1, column=0, sticky=W)
         
         titles = ["#", "IP", "Značka", "Model", "EČV",
-                  "Smer", "Rýchlosť", "Činnosť"]
+                  "Smer", "Rýchlosť (km/h)", "Činnosť", "Otáčky (o/m)"]
         
         l = Label(table, text="VOZIDLÁ V DOSAHU")
         l.grid(row=0, column=0,
@@ -97,8 +97,9 @@ class Gui(Frame):
                 row[5]["text"] = v.echo("directionAsText")
                 row[6]["text"] = v.echo("speed")
                 row[7]["text"] = v.echo("actionAsText")
+                row[8]["text"] = v.echo("rotates")
             else:
-                for j in range(7):
+                for j in range(8):
                    row[j + 1]["text"] = None
                 
     
