@@ -50,9 +50,9 @@ class VehicleServer:
         
     def _udpSockReceiver(self):
         try:
-            (json, (ip)) = self.udpSock.recvfrom(VehicleServer.BUFFER_SIZE)
+            (json, (ip, port)) = self.udpSock.recvfrom(VehicleServer.BUFFER_SIZE)
 
-            if ip == self.ip:
+            if ip == self.ip or ip == "127.0.0.1":
                 if self.vehicle.fromJson(json, True) != None:
                     self.gui.updateMyVehicle()
             else:

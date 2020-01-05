@@ -56,7 +56,7 @@ class VehicleClient:
 
             # Odošleme informácie o našom vozidle nášmu serveru
             self.udpSock.sendto(self.vehicle.toEncodedJson(True),
-                                ("127.0.0.1", self.allAddr[1]))
+                                (self.vehicle.ip, self.allAddr[1]))
 
             # Odošleme informácie o našom vozidle do prostredia okolo (vrátane) nás
             self.udpSock.sendto(self.vehicle.toEncodedJson(), self.allAddr)
