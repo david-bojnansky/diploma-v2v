@@ -1,0 +1,47 @@
+#!/usr/bin/expect -f
+
+set address [exec head -1 /home/pi/Desktop/vehicle-info.txt]
+set pin [exec head -2 /home/pi/Desktop/vehicle-info.txt | tail -1]
+set prompt "#"
+
+spawn bluetoothctl
+expect $prompt
+
+send -- "power on\n"
+expect "succeeded"
+expect $prompt
+
+send -- "agent on\n"
+expect "registered"
+expect $prompt
+
+send -- "default-agent\n"
+expect "successful"
+expect $prompt
+
+send -- "remove $address\n"
+expect -re "not available|removed"
+expect $prompt
+
+send -- "scan on\n"
+expect "started"
+expect $prompt
+
+sleep 15
+
+send -- "scan off\n"
+expect "stopped"
+expect $prompt
+
+send -- "trust $address\n"
+expect "succeeded"
+expect $prompt
+
+send -- "pair $address\n"
+expect "PIN"
+send -- "$pin\n"
+expect "successful"
+expect $prompt
+
+send "quit\n"
+expect "eof"

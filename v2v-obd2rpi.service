@@ -1,0 +1,15 @@
+[Unit]
+After=multi-user.target
+
+[Service]
+PIDFile=/run/v2v-obd2rpi.pid
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/pi/Desktop/obd2rpi
+StandardOutput=append:/home/pi/Desktop/v2v-obd2rpi.log
+StandardError=append:/home/pi/Desktop/v2v-obd2rpi.err
+KillSignal=SIGINT
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rfcomm connect hci0 "$(head -1 /home/pi/Desktop/vehicle-info.txt)"
