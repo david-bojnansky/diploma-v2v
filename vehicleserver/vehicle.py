@@ -45,8 +45,11 @@ class Vehicle:
             return val
     
     
-    def fromJson(self, data):
+    def fromJson(self, data, ifAboutMe = False):
         data = json.loads(data)
+        
+        if ifAboutMe != data.get("aboutMe"):
+            return None
         
         if (self == None):
             self = Vehicle()

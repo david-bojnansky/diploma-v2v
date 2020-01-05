@@ -1,6 +1,6 @@
+import netifaces
 import signal
 import socket
-import sys
 import time
 
 from foreignvehicles import ForeignVehicles
@@ -10,105 +10,90 @@ from tkinter import Tk
 from vehicle import Vehicle
 
 class VehicleServer:
-    SRV_IP = "127.0.0.1"
-    SRV_PORT = 20000
-    SRV_ADDR = (SRV_IP, SRV_PORT)
     # Uvedená IP ("") reprezentuje priradenú IP-čku z rozsahu
     # 169.254.0.1-254 (unicast) a 169.254.0.255 (broadcast).
     # To znamená, že server počúva na dvoch IP-čkách
-    ALL_IP = ""
-    ALL_PORT = 20001
-    ALL_ADDR = (ALL_IP, ALL_PORT)
+    IP = ""
+    PORT = 20000
+    ADDR = (IP, PORT)
     INFO_FILENAME = "/home/pi/Desktop/v2v/vehicleinfo.txt"
+    NETWORK_INTERFACE_NAME = "bat0"
     BUFFER_SIZE = 1024
     
-    def __init__(self, srvAddr, allAddr, new,
-                 vehicle, srvUdpSock, allUdpSock,
-                 foreignVehicles, gui):
-        self.srvAddr = srvAddr
-        self.allAddr = allAddr
+    ip = None
+    
+    def __init__(self, addr, new, vehicle,
+                 udpSock, foreignVehicles, gui):
+        self.addr = addr
         self.new = new
         self.vehicle = vehicle
-        self.srvUdpSock = srvUdpSock
-        self.allUdpSock = allUdpSock
+        self.udpSock = udpSock
         self.foreignVehicles = foreignVehicles
         self.gui = gui
         
     
-    def registerShutdownHandler(self):
+    def _registerShutdownHandler(self):
         signal.signal(signal.SIGINT, self.stop)
         signal.signal(signal.SIGTERM, self.stop)
-    
-    
-    def initSrvUdpSock(self):
-        self.srvUdpSock.setblocking(False)
-        self.srvUdpSock.bind(self.srvAddr)
-    
-    
-    def initAllUdpSock(self):
-        self.allUdpSock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.allUdpSock.setblocking(False)
-        self.allUdpSock.bind(self.allAddr)
         
         
-    def srvUdpSockReceiver(self):
+    def _figureOutMyIp(self, netifaces):
+        bat0 = netifaces.ifaddresses(VehicleServer.NETWORK_INTERFACE_NAME)
+        self.ip = bat0[netifaces.AF_INET][0]["addr"]
+    
+    
+    def _initUdpSock(self):
+        self.udpSock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self.udpSock.setblocking(False)
+        self.udpSock.bind(self.addr)
+        
+        
+    def _udpSockReceiver(self):
         try:
-            (json, ip) = self.srvUdpSock.recvfrom(VehicleServer.BUFFER_SIZE)
+            (json, (ip)) = self.udpSock.recvfrom(VehicleServer.BUFFER_SIZE)
 
-            self.vehicle.fromJson(json)
-        except BlockingIOError:
-            pass
-        
-        self.gui.updateMyVehicle()
-        self.gui.invokeLater(self.allUdpSockReceiver)
-        
-        
-    def allUdpSockReceiver(self):
-        try:
-            (json, ip) = self.allUdpSock.recvfrom(VehicleServer.BUFFER_SIZE)
-
-            foreignVehicle = self.foreignVehicles.get(ip)
-            
-            if (foreignVehicle == None):
-                foreignVehicle = self.new.vehicle(json)
-                self.foreignVehicles.add(foreignVehicle)
+            if ip == self.ip:
+                if self.vehicle.fromJson(json, True) != None:
+                    self.gui.updateMyVehicle()
             else:
-                foreignVehicle.fromJson(json)
-                
-            self.foreignVehicles.removeAllUnreachable(time.time())
+                foreignVehicle = self.foreignVehicles.get(ip)
+            
+                if (foreignVehicle == None):
+                    foreignVehicle = self.new.foreignVehicle(json)
+                    self.foreignVehicles.add(foreignVehicle)
+                else:
+                    foreignVehicle.fromJson(json)
         except BlockingIOError:
             pass
         
+        self.foreignVehicles.removeAllUnreachable(time.time())
         self.gui.updateForeignVehicles()
-        self.gui.invokeLater(self.srvUdpSockReceiver)
+        self.gui.invokeLater(self._udpSockReceiver)
      
     
-    def start(self):        
-        self.registerShutdownHandler()
-        self.initSrvUdpSock()
-        self.initAllUdpSock()
-        self.gui.show(self.srvUdpSockReceiver)
+    def start(self, nfs = netifaces):        
+        self._registerShutdownHandler()
+        self._figureOutMyIp(nfs)
+        self._initUdpSock()
+        self.gui.show(self._udpSockReceiver)
         
         
     def stop(self, sigNum = None, csf = None):
         self.gui.close()
-        self.allUdpSock.close()
-        self.srvUdpSock.close()
+        self.udpSock.close()
 
 
 if __name__ == "__main__":
     new = ObjectMaker()
     vehicle = Vehicle()
-    srvUdpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    allUdpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    udpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     tk = Tk()
     foreignVehicles = ForeignVehicles()
     gui = Gui(master=tk, vehicle=vehicle,
               foreignVehicles=foreignVehicles)
     
-    server = VehicleServer(VehicleServer.SRV_ADDR,
-                           VehicleServer.ALL_ADDR, new,
-                           vehicle, srvUdpSock, allUdpSock,
+    server = VehicleServer(VehicleServer.ADDR,
+                           new, vehicle, udpSock,
                            foreignVehicles, gui)
     
     try:

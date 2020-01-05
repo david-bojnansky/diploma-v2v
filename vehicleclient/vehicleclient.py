@@ -4,46 +4,35 @@ import obd
 import signal
 import socket
 import subprocess
-import sys
 import time
 
 from myvehicle import MyVehicle
 from obdmonitor import ObdMonitor
 
 class VehicleClient:
-    SRV_IP = "127.0.0.1"
-    SRV_PORT = 20000
-    SRV_ADDR = (SRV_IP, SRV_PORT)
-    ALL_IP = "169.254.0.255" # Všetci v dosahu (broadcast)
-    ALL_PORT = 20001
+    ALL_IP = "169.254.0.255" # Všetci v dosahu (broadcast) vrátane nás
+    ALL_PORT = 20000
     ALL_ADDR = (ALL_IP, ALL_PORT)
     INFO_FILENAME = "/home/pi/Desktop/v2v/vehicleinfo.txt"
     
-    def __init__(self, srvAddr, allAddr,
-                 vehicle, srvUdpSock, allUdpSock,
-                 obd, obdMon):
-        self.srvAddr = srvAddr
+    def __init__(self, allAddr, vehicle, udpSock, obd, obdMon):
         self.allAddr = allAddr
         self.vehicle = vehicle
-        self.srvUdpSock = srvUdpSock
-        self.allUdpSock = allUdpSock
+        self.udpSock = udpSock
         self.obd = obd
         self.obdMon = obdMon
         
     
-    def registerShutdownHandler(self):
+    def _registerShutdownHandler(self):
         signal.signal(signal.SIGINT, self.stop)
         signal.signal(signal.SIGTERM, self.stop)
     
-    def initSrvUdpSock(self):
-        pass
+    
+    def _initUdpSock(self):
+        self.udpSock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     
     
-    def initAllUdpSock(self):
-        self.allUdpSock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-    
-    
-    def initObd(self):
+    def _initObd(self):
         self.obd.supported_commands.add(mycommands.GEAR)
         self.obd.watch(obd.commands.RPM, self.obdMon.updateTime)
         self.obd.watch(mycommands.GEAR)
@@ -51,7 +40,7 @@ class VehicleClient:
         self.obd.start()
        
        
-    def run(self, sleep):
+    def _run(self, sleep):
         while self.obdMon.isAlive():
             rotates = self.obd.query(obd.commands.RPM).value
             gear = self.obd.query(mycommands.GEAR).value
@@ -64,46 +53,43 @@ class VehicleClient:
                 speed = speed.magnitude
             
             self.vehicle.update(rotates, gear, speed)
-            
-            # Odošleme informácie o našom vozidle nášmu serveru
-            self.srvUdpSock.sendto(self.vehicle.toEncodedJson(True), self.srvAddr)
 
-            # Odošleme informácie o našom vozidle do prostredia okolo nás
-            self.allUdpSock.sendto(self.vehicle.toEncodedJson(), self.allAddr)
+            # Odošleme informácie o našom vozidle nášmu serveru
+            self.udpSock.sendto(self.vehicle.toEncodedJson(True),
+                                ("127.0.0.1", self.allAddr[1]))
+
+            # Odošleme informácie o našom vozidle do prostredia okolo (vrátane) nás
+            self.udpSock.sendto(self.vehicle.toEncodedJson(), self.allAddr)
 
             sleep(1)
      
     
-    def start(self, infoFilename, nfs = netifaces, sleep = time.sleep):
-        self.registerShutdownHandler()
+    def start(self, infoFilename = INFO_FILENAME,
+              nfs = netifaces, sleep = time.sleep):
+        self._registerShutdownHandler()
         self.vehicle.init(netifaces, infoFilename)
-        self.initSrvUdpSock()
-        self.initAllUdpSock()
-        self.initObd()
+        self._initUdpSock()
+        self._initObd()
         self.obdMon.updateTime()
-        self.run(sleep)
+        self._run(sleep)
         
         
     def stop(self, sigNum = None, csf = None):
         self.obd.close()
-        self.allUdpSock.close()
-        self.srvUdpSock.close()
+        self.udpSock.close()
 
 
 if __name__ == "__main__":
     vehicle = MyVehicle()
-    srvUdpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    allUdpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    udpSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     obdConn = obd.Async()
     obdMon = ObdMonitor(time.time, subprocess.call)
     
-    client = VehicleClient(VehicleClient.SRV_ADDR,
-                           VehicleClient.ALL_ADDR,
-                           vehicle, srvUdpSock, allUdpSock,
-                           obdConn, obdMon)
+    client = VehicleClient(VehicleClient.ALL_ADDR, vehicle,
+                           udpSock, obdConn, obdMon)
     
     try:
-        client.start(VehicleClient.INFO_FILENAME)
+        client.start()
     except KeyboardInterrupt:
         pass
     finally:

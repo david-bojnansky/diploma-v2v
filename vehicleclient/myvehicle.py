@@ -22,7 +22,7 @@ class MyVehicle:
         
     
     def figureOutMyIp(self, netifaces):
-        bat0 = netifaces.ifaddresses(self.NETWORK_INTERFACE_NAME)
+        bat0 = netifaces.ifaddresses(MyVehicle.NETWORK_INTERFACE_NAME)
         self.ip = bat0[netifaces.AF_INET][0]["addr"]
         
     
@@ -120,6 +120,7 @@ class MyVehicle:
         
     def toJson(self, forServer = False):
         data = {
+            "aboutMe": forServer,
             "ip": self.ip,
             "brand": self.brand,
             "model": self.model,

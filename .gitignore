@@ -1,2 +1,4 @@
+**/__pycache__
 etc-network-interfaces.d/bat0
+lib-systemd-system/log
 vehicleinfo.txt

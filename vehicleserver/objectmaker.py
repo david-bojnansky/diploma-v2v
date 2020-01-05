@@ -1,6 +1,6 @@
 from vehicle import Vehicle
 
 class ObjectMaker:
-    def vehicle(self, json):
+    def foreignVehicle(self, json):
         return Vehicle.fromJson(None, json)
     

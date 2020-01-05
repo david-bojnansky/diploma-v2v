@@ -103,7 +103,7 @@ class Gui(Frame):
                 
     
     def invokeLater(self, runner):
-        self.afterId = self.after(100, runner)
+        self.afterId = self.after(200, runner)
                 
                 
     def show(self, invokeLaterRunner):
