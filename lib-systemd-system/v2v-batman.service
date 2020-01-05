@@ -1,0 +1,14 @@
+[Unit]
+After=multi-user.target
+
+[Service]
+PIDFile=/run/v2v-batman.pid
+ExecStartPre=/bin/sleep 10
+ExecStart=/home/pi/Desktop/v2v/batman/batman
+StandardOutput=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-batman.log
+StandardError=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-batman.err
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

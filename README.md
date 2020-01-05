@@ -13,6 +13,7 @@ https://github.com/brendan-w/python-OBD/pull/162/files
 
 https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
 https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
+https://medium.com/@tdoll/how-to-setup-a-raspberry-pi-ad-hoc-network-using-batman-adv-on-raspbian-stretch-lite-dce6eb896687
 
 https://stackoverflow.com/questions/24196932/how-can-i-get-the-ip-address-from-nic-in-python
 sudo pip3 install netifaces

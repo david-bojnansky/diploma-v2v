@@ -17,7 +17,7 @@ class VehicleClient:
     ALL_IP = "169.254.0.255" # Všetci v dosahu (broadcast)
     ALL_PORT = 20001
     ALL_ADDR = (ALL_IP, ALL_PORT)
-    INFO_FILENAME = "/home/pi/Desktop/vehicleinfo.txt"
+    INFO_FILENAME = "/home/pi/Desktop/v2v/vehicleinfo.txt"
     
     def __init__(self, srvAddr, allAddr,
                  vehicle, srvUdpSock, allUdpSock,

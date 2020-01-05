@@ -5,7 +5,7 @@ After=v2v-obd2rpi.service
 [Service]
 PIDFile=/run/v2v-vehicleclient.pid
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/python3 /home/pi/Desktop/v2v/vehicleclient.py
+ExecStart=/usr/bin/python3 /home/pi/Desktop/v2v/vehicleclient/vehicleclient.py
 StandardOutput=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-vehicleclient.log
 StandardError=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-vehicleclient.err
 Restart=always

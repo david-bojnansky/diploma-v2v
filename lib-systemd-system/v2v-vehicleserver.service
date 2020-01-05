@@ -7,7 +7,7 @@ Environment="DISPLAY=:0"
 Environment="XAUTHORITY=/home/pi/.Xauthority"
 PIDFile=/run/v2v-vehicleserver.pid
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/python3 /home/pi/Desktop/v2v/vehicleserver.py
+ExecStart=/usr/bin/python3 /home/pi/Desktop/v2v/vehicleserver/vehicleserver.py
 StandardOutput=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-vehicleserver.log
 StandardError=append:/home/pi/Desktop/v2v/lib-systemd-system/log/v2v-vehicleserver.err
 Restart=always

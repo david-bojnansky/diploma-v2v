@@ -7,17 +7,19 @@ cd /home/pi/Desktop/v2v
 # Networking
 cp etc-network-interfaces.d/bat0.example etc-network-interfaces.d/bat0
 chown pi:pi etc-network-interfaces.d/bat0
-ln -sf /home/pi/Desktop/v2v/etc-network/interfaces         /etc/network/interfaces
-ln -sf /home/pi/Desktop/v2v/etc-network-interfaces.d/bat0  /etc/network/interfaces.d/bat0
-ln -sf /home/pi/Desktop/v2v/etc-network-interfaces.d/wlan0 /etc/network/interfaces.d/wlan0
+ln -sf "$(pwd)/etc-network/interfaces"         /etc/network/interfaces
+ln -sf "$(pwd)/etc-network-interfaces.d/bat0"  /etc/network/interfaces.d/bat0
+ln -sf "$(pwd)/etc-network-interfaces.d/wlan0" /etc/network/interfaces.d/wlan0
 
 # Services
-ln -sf /home/pi/Desktop/v2v/lib-systemd-system/v2v-obd2rpi.service       /lib/systemd/system/v2v-obd2rpi.service
-ln -sf /home/pi/Desktop/v2v/lib-systemd-system/v2v-vehicleclient.service /lib/systemd/system/v2v-vehicleclient.service
-ln -sf /home/pi/Desktop/v2v/lib-systemd-system/v2v-vehicleserver.service /lib/systemd/system/v2v-vehicleserver.service
+ln -sf "$(pwd)/lib-systemd-system/v2v-batman.service"        /lib/systemd/system/v2v-batman.service
+ln -sf "$(pwd)/lib-systemd-system/v2v-obd2rpi.service"       /lib/systemd/system/v2v-obd2rpi.service
+ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleclient.service" /lib/systemd/system/v2v-vehicleclient.service
+ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleserver.service" /lib/systemd/system/v2v-vehicleserver.service
 mkdir -p lib-systemd-system/log
 chown pi:pi lib-systemd-system/log
 systemctl daemon-reload
+systemctl enable v2v-batman.service
 systemctl enable v2v-obd2rpi.service
 systemctl enable v2v-vehicleclient.service
 systemctl enable v2v-vehicleserver.service
