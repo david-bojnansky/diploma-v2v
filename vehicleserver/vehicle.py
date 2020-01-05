@@ -17,7 +17,7 @@ class Vehicle:
         
     def update(self, ip, brand, model, vrn, rotates, gear,
                direction, directionAsText, speed, action,
-               actionAsText, t = time.time()):
+               actionAsText, t = time.time):
         self.ip = ip
         self.brand = brand
         self.model = model
@@ -29,7 +29,7 @@ class Vehicle:
         self.speed = speed
         self.action = action
         self.actionAsText = actionAsText
-        self.lastUpdateAt = t
+        self.lastUpdateAt = t()
         
         
     def isReachable(self, time):
@@ -45,10 +45,10 @@ class Vehicle:
             return val
     
     
-    def fromJson(self, data, ifAboutMe = False):
+    def fromJson(self, data, needsAboutMe = False):
         data = json.loads(data)
         
-        if ifAboutMe != data.get("aboutMe"):
+        if needsAboutMe and not data.get("aboutMe"):
             return None
         
         if (self == None):

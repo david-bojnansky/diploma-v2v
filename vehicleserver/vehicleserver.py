@@ -51,13 +51,13 @@ class VehicleServer:
     def _udpSockReceiver(self):
         try:
             (json, (ip, port)) = self.udpSock.recvfrom(VehicleServer.BUFFER_SIZE)
-            print(ip)
+            
             if ip == self.ip or ip == "127.0.0.1":
                 if self.vehicle.fromJson(json, True) != None:
                     self.gui.updateMyVehicle()
             else:
                 foreignVehicle = self.foreignVehicles.get(ip)
-            
+                
                 if (foreignVehicle == None):
                     foreignVehicle = self.new.foreignVehicle(json)
                     self.foreignVehicles.add(foreignVehicle)

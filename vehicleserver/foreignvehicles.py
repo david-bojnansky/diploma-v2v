@@ -38,7 +38,7 @@ class ForeignVehicles:
         self.vehicles.append(vehicle)
         
         
-    def removeAllUnreachable(self, time):        
+    def removeAllUnreachable(self, time):
         for i, v in enumerate(self.vehicles):
             if not v.isReachable(time):
                 del self.vehicles[i]
