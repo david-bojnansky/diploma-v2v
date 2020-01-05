@@ -2,7 +2,12 @@
 
 cd /home/pi/Desktop/v2v
 
-#pip3 install netifaces obd
+# Install dependencies
+apt-get update
+apt-get install -y batctl bluez expect python3.7
+
+# Install Python dependencies
+pip3 install netifaces https://github.com/brendan-w/python-OBD/archive/master.zip
 
 # Networking
 cp etc-network-interfaces.d/bat0.example etc-network-interfaces.d/bat0
@@ -12,14 +17,12 @@ ln -sf "$(pwd)/etc-network-interfaces.d/bat0"  /etc/network/interfaces.d/bat0
 ln -sf "$(pwd)/etc-network-interfaces.d/wlan0" /etc/network/interfaces.d/wlan0
 
 # Services
-ln -sf "$(pwd)/lib-systemd-system/v2v-batman.service"        /lib/systemd/system/v2v-batman.service
 ln -sf "$(pwd)/lib-systemd-system/v2v-obd2rpi.service"       /lib/systemd/system/v2v-obd2rpi.service
 ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleclient.service" /lib/systemd/system/v2v-vehicleclient.service
 ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleserver.service" /lib/systemd/system/v2v-vehicleserver.service
 mkdir -p lib-systemd-system/log
 chown pi:pi lib-systemd-system/log
 systemctl daemon-reload
-systemctl enable v2v-batman.service
 systemctl enable v2v-obd2rpi.service
 systemctl enable v2v-vehicleclient.service
 systemctl enable v2v-vehicleserver.service
@@ -28,7 +31,21 @@ systemctl enable v2v-vehicleserver.service
 cp vehicleinfo.txt.example vehicleinfo.txt
 chown pi:pi vehicleinfo.txt
 
+# Enabling BATMAN-ADV
+echo "" >> /etc/modules
+echo "batman-adv" >> /etc/modules
+echo "" >> /etc/modules
+echo "" >> /etc/dhcpcd.conf
+echo "denyinterfaces wlan0" >> /etc/dhcpcd.conf
+echo "" >> /etc/dhcpcd.conf
+echo "" >> /home/pi/.bashrc
+echo "$(pwd)/batman/batman" >> /home/pi/.bashrc
+echo "" >> /home/pi/.bashrc
+
 # Tasks
+echo ""
+echo ""
+echo ""
 echo "Úlohy:"
 echo "------"
 echo "1. V súbore ./etc-network-interfaces.d/bat0 oprav IP adresu"

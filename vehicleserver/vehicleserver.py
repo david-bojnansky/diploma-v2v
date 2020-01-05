@@ -1,5 +1,3 @@
-import mycommands
-import netifaces
 import signal
 import socket
 import sys
@@ -85,7 +83,7 @@ class VehicleServer:
         self.gui.invokeLater(self.srvUdpSockReceiver)
      
     
-    def start(self, infoFilename, nfs = netifaces, sleep = time.sleep):        
+    def start(self):        
         self.registerShutdownHandler()
         self.initSrvUdpSock()
         self.initAllUdpSock()
@@ -114,7 +112,7 @@ if __name__ == "__main__":
                            foreignVehicles, gui)
     
     try:
-        server.start(VehicleServer.INFO_FILENAME)
+        server.start()
     except KeyboardInterrupt:
         pass
     finally:
