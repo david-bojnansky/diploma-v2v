@@ -5,6 +5,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 ## Minimálne požiadavky
 
 - Počítač
+- Sieťový LAN kábel
 - Dva minipočítače Raspberry Pi 3 Model B
 - Dve micro SD karty o veľkosti 8 GB (s adaptérom pre počítač)
 - Napájací adaptér pre minipočítač
