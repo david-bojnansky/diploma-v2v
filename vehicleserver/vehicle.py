@@ -13,7 +13,7 @@ class Vehicle:
     speed = None
     action = None
     actionAsText = None
-    lastUpdateAt = None       
+    _lastUpdateAt = None       
         
     def update(self, ip, brand, model, vrn, rotates, gear,
                direction, directionAsText, speed, action,
@@ -29,29 +29,29 @@ class Vehicle:
         self.speed = speed
         self.action = action
         self.actionAsText = actionAsText
-        self.lastUpdateAt = t()
+        self._lastUpdateAt = t()
         
         
     def isReachable(self, time):
-        return time <= self.lastUpdateAt + 3
+        return time <= self._lastUpdateAt + 3
     
     
     def echo(self, name, alt = "Zisťujem..."):
         val = getattr(self, name)
         
-        if (val == None):
+        if val == None:
             return alt
         else:
             return val
     
     
-    def fromJson(self, data, needsAboutMe = False):
+    def fromJson(self, data, requiresAboutMe = False):
         data = json.loads(data)
         
-        if needsAboutMe and not data.get("aboutMe"):
+        if requiresAboutMe and not data.get("aboutMe"):
             return None
         
-        if (self == None):
+        if self == None:
             self = Vehicle()
         
         self.update(data.get("ip"),
