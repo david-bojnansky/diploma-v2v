@@ -2,7 +2,21 @@
 
 Diplomová práca (c) 2020 Bojnanský Dávid
 
+## Minimálne požiadavky
+
+- Dva minipočítače Raspberry Pi 3 Model B
+- Dve micro SD karty o veľkosti 8 GB (s adaptérom pre PC)
+- Napájací adaptér pre minipočítač
+- USB klávesnica a USB myš
+- Veľký monitor s HDMI konektorom a HDMI kábel
+- Prenosný HDMI displej pre minipočítač s káblami
+- Dva OBD skenery, napr. [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357) (nie každý funguje s týmto programom)
+- Dve vozidlá s OBD konektormi
+- Dve micro USB auto-nabíjačky
+
+
 ## Postup spustenia v praxi
+- Mať k dispozícii Raspberry Pi 3, SD kartu o veľkosti aspoň, USB autonabíjačku, aspoň 1 displej
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
 - Rozbaliť .zip archív pomocou [7-Zip](https://www.7-zip.org/)
 - Zapísať .img na SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
