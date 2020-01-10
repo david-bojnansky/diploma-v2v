@@ -35,7 +35,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
     - Model vozidla
     - Evidenčné číslo vozidla
 - Prideliť IP adresu: `nano etc-network-interfaces.d/bat0`
-- Vypnúť minipočítač: `sudo shutdown`
+- Vypnúť minipočítač: `sudo shutdown now`
 - Vložiť OBD skener do OBD konektora vo vozidle
 - Naštartovať vozidlo
 - Pripojiť displej k minipočítaču a ostatné periférne zariadenia
