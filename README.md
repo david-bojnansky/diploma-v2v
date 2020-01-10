@@ -4,8 +4,9 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Minimálne požiadavky
 
+- Počítač
 - Dva minipočítače Raspberry Pi 3 Model B
-- Dve micro SD karty o veľkosti 8 GB (s adaptérom pre PC)
+- Dve micro SD karty o veľkosti 8 GB (s adaptérom pre počítač)
 - Napájací adaptér pre minipočítač
 - USB klávesnica a USB myš
 - Veľký monitor s HDMI konektorom a HDMI kábel
