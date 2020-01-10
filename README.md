@@ -25,7 +25,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Spustiť príkazový riadok
 - Zmeniť názov počítača (napríklad na rpi-1, rpi-2, ...): `sudo nano /etc/hostname`
 - Zmeniť aktuálny pracovný priečinok: `cd /home/pi/Desktop`
-- Naklonovať Git projekt: `git clone https://github.com/david-bojnansky/diploma-v2v.git v2v` (pred tým však môže vyžadovať základnú konfiguráciu Git-u cez `git config`)
+- Naklonovať Git projekt: `git clone https://github.com/david-bojnansky/diploma-v2v.git v2v`
 - Zmeniť aktuálny pracovný priečinok: `cd v2v`
 - Spustiť inštalačný skript: `sudo ./install`
 - Prepísať informácie o vozidle: `nano vehicleinfo.txt`
