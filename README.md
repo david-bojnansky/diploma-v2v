@@ -4,26 +4,24 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Minimálne požiadavky
 
-- Počítač
-- Sieťový LAN kábel
+- Počítač, nainštalovaný webový prehliadač a nainštalované programy [7-Zip](https://www.7-zip.org/) a [balenaEtcher](https://www.balena.io/etcher/)
+- Sieťový LAN kábel napojený do routra s prístupom na internet
 - Dva minipočítače Raspberry Pi 3 Model B
 - Dve micro SD karty o veľkosti 8 GB (s adaptérom pre počítač)
 - Napájací adaptér pre minipočítač
 - USB klávesnica a USB myš
 - Veľký monitor s HDMI konektorom a HDMI kábel
-- Prenosný HDMI displej pre minipočítač s káblami
+- Prenosný HDMI displej pre minipočítač s potrebnými káblami
 - Dva OBD skenery (nie každý funguje s týmto programom), napr. [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357)
 - Dve vozidlá s OBD konektormi
 - Dve micro USB auto-nabíjačky
 
-
-## Postup spustenia v praxi
-- Mať k dispozícii Raspberry Pi 3, SD kartu o veľkosti aspoň, USB autonabíjačku, aspoň 1 displej
+## Postup spustenia programu v praxi
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
-- Rozbaliť .zip archív pomocou [7-Zip](https://www.7-zip.org/)
-- Zapísať .img na SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-- Napojiť LAN kábel
-- Nainštalovať OS
+- Rozbaliť .zip archív pomocou 7-Zip
+- Zapísať .img na micro SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+- Zapnúť minipočítač (vrátane napojenia LAN kábla)
+- Nakonfigurovať OS 
 - Spustiť terminál
 - Zmeniť názov počítača (napríklad na rpi-1, rpi-2, ...): `sudo nano /etc/hostname`
 - Aktualizovať repozitáre: `sudo apt-get update`
