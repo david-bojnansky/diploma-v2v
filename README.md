@@ -25,7 +25,7 @@
 - Zahájiť Bluetooth párovanie s OBD skenerom: `./obd2rpi/pairwithobd`
 - Reštartovať minipočítač: `sudo reboot`
 - Po reštartovaní by sa do minúty malo ukázať grafické rozhranie
-
+- Systém beží
 
 ## Materiály
 https://python-obd.readthedocs.io/en/latest/
