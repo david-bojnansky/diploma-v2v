@@ -20,7 +20,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
 - Rozbaliť .zip archív pomocou 7-Zip
 - Zapísať .img na micro SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-- Zapnúť minipočítač (vrátane napojenia LAN kábla)
+- Zapnúť minipočítač (vrátane napojenia LAN kábla a pripojených periférnych zariadení)
 - Preklikať sa nastaveniami pri úplne prvom spustení
 - Spustiť príkazový riadok
 - Zmeniť názov počítača (napríklad na rpi-1, rpi-2, ...): `sudo nano /etc/hostname`
@@ -38,7 +38,8 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Vypnúť minipočítač: `sudo shutdown`
 - Vložiť OBD skener do OBD konektora vo vozidle
 - Naštartovať vozidlo
-- Pripojiť displej k minipočítaču a zapnúť minipočítač
+- Pripojiť displej k minipočítaču a ostatné periférne zariadenia
+- Zapnúť minipočítač
 - Spustiť príkazový riadok
 - Zmeniť aktuálny pracovný priečinok: `cd /home/pi/Desktop/v2v`
 - Zahájiť Bluetooth párovanie s OBD skenerom: `./obd2rpi/pairwithobd`
