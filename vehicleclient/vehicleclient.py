@@ -14,6 +14,7 @@ class VehicleClient:
     ALL_IP = "169.254.0.255" # Všetci v dosahu (broadcast) vrátane nás
     ALL_PORT = 20000
     ALL_ADDR = (ALL_IP, ALL_PORT)
+    NETWORK_INTERFACE_NAME = "bat0"
     INFO_FILENAME = "/home/pi/Desktop/v2v/vehicleinfo.txt"
     OBD_SERVICE_NAME = "v2v-obd2rpi.service"
     
@@ -68,10 +69,11 @@ class VehicleClient:
             sleep(1)
      
     
-    def start(self, infoFilename = INFO_FILENAME,
+    def start(self, netIfName = NETWORK_INTERFACE_NAME,
+              infoFilename = INFO_FILENAME,
               nfs = netifaces, sleep = time.sleep):
         self._registerShutdownHandler()
-        self._vehicle.init(netifaces, infoFilename)
+        self._vehicle.init(netIfName, infoFilename, nfs)
         self._initUdpSock()
         self._initObd()
         self._obdMon.updateTime()

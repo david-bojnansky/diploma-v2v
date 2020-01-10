@@ -1,12 +1,10 @@
 import subprocess
 import time
 
-class ObdMonitor:
-    SERVICE_NAME = "v2v-obd2rpi.service"
-    
+class ObdMonitor:    
     _lastUpdateAt = None
     
-    def __init__(self, serviceName = SERVICE_NAME,
+    def __init__(self, serviceName,
                  t = time.time, execute = subprocess.call):
         self._serviceName = serviceName
         self._time = t
