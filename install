@@ -2,21 +2,21 @@
 
 cd /home/pi/Desktop/v2v
 
-# Install dependencies
+# Nainštalovať OS závislosti
 apt-get update
 apt-get install -y batctl bluez expect python3.7
 
-# Install Python dependencies
+# Nainštalovať Python závislosti
 pip3 install netifaces https://github.com/brendan-w/python-OBD/archive/master.zip
 
-# Networking
+# Sieťové rozhranie
 cp etc-network-interfaces.d/bat0.example etc-network-interfaces.d/bat0
 chown pi:pi etc-network-interfaces.d/bat0
 ln -sf "$(pwd)/etc-network/interfaces"         /etc/network/interfaces
 ln -sf "$(pwd)/etc-network-interfaces.d/bat0"  /etc/network/interfaces.d/bat0
 ln -sf "$(pwd)/etc-network-interfaces.d/wlan0" /etc/network/interfaces.d/wlan0
 
-# Services
+# Služby
 ln -sf "$(pwd)/lib-systemd-system/v2v-obd2rpi.service"       /lib/systemd/system/v2v-obd2rpi.service
 ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleclient.service" /lib/systemd/system/v2v-vehicleclient.service
 ln -sf "$(pwd)/lib-systemd-system/v2v-vehicleserver.service" /lib/systemd/system/v2v-vehicleserver.service
@@ -31,7 +31,7 @@ systemctl enable v2v-vehicleserver.service
 cp vehicleinfo.txt.example vehicleinfo.txt
 chown pi:pi vehicleinfo.txt
 
-# Enabling BATMAN-ADV
+# Aktivovať BATMAN-ADV
 echo "" >> /etc/modules
 echo "batman-adv" >> /etc/modules
 echo "" >> /etc/modules
@@ -42,7 +42,7 @@ echo "" >> /home/pi/.bashrc
 echo "$(pwd)/batman/batman" >> /home/pi/.bashrc
 echo "" >> /home/pi/.bashrc
 
-# Tasks
+# Čo ešte treba urobiť
 echo ""
 echo ""
 echo ""
