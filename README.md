@@ -38,7 +38,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Vypnúť minipočítač: `sudo shutdown now`
 - Vložiť OBD skener do OBD konektora vo vozidle
 - Naštartovať vozidlo
-- Pripojiť displej k minipočítaču a ostatné periférne zariadenia
+- Pripojiť displej k minipočítaču ako aj ostatné periférne zariadenia
 - Zapnúť minipočítač
 - Spustiť príkazový riadok
 - Zmeniť aktuálny pracovný priečinok: `cd /home/pi/Desktop/v2v`
