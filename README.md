@@ -21,27 +21,31 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Rozbaliť .zip archív pomocou 7-Zip
 - Zapísať .img na micro SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 - Zapnúť minipočítač (vrátane napojenia LAN kábla)
-- Nakonfigurovať OS 
-- Spustiť terminál
+- Preklikať sa nastaveniami pri úplne prvom spustení
+- Spustiť príkazový riadok
 - Zmeniť názov počítača (napríklad na rpi-1, rpi-2, ...): `sudo nano /etc/hostname`
-- Aktualizovať repozitáre: `sudo apt-get update`
-- Aktualizovať knižnice: `sudo apt-get upgrade`
 - Zmeniť aktuálny pracovný priečinok: `cd /home/pi/Desktop`
-- Naklonovať projekt: `git clone https://github.com/david-bojnansky/diploma-v2v.git v2v` (pred tým však môže vyžadovať základnú konfiguráciu git-u)
+- Naklonovať Git projekt: `git clone https://github.com/david-bojnansky/diploma-v2v.git v2v` (pred tým však môže vyžadovať základnú konfiguráciu Git-u cez `git config`)
 - Zmeniť aktuálny pracovný priečinok: `cd v2v`
 - Spustiť inštalačný skript: `sudo ./install`
-- Prepísať informácie o vozidle (MAC adresa OBD skenera, PIN kód OBD skenera pre Bluetooth párovanie, značka vozidla, model vozidla, EČV): `nano vehicleinfo.txt`
-- Opraviť IP adresu: `nano etc-network-interfaces.d/bat0`
-- Vypnúť
+- Prepísať informácie o vozidle: `nano vehicleinfo.txt`
+    - MAC adresa OBD skenera
+    - PIN kód OBD skenera pre Bluetooth párovanie
+    - Značka vozidla
+    - Model vozidla
+    - Evidenčné číslo vozidla
+- Prideliť IP adresu: `nano etc-network-interfaces.d/bat0`
+- Vypnúť minipočítač: `sudo shutdown`
 - Vložiť OBD skener do OBD konektora vo vozidle
 - Naštartovať vozidlo
-- Pripojiť displej a zapnúť minipočítač
-- Spustiť terminál
+- Pripojiť displej k minipočítaču a zapnúť minipočítač
+- Spustiť príkazový riadok
 - Zmeniť aktuálny pracovný priečinok: `cd /home/pi/Desktop/v2v`
 - Zahájiť Bluetooth párovanie s OBD skenerom: `./obd2rpi/pairwithobd`
 - Reštartovať minipočítač: `sudo reboot`
-- Po reštartovaní by sa do minúty malo ukázať grafické rozhranie
-- Systém beží
+- Po reštartovaní sa do minúty ukáže grafické rozhranie
+- Systém beží...
+- *Postup zopakovať pre ďalšie vozidlo*
 
 ## Materiály
 https://python-obd.readthedocs.io/en/latest/
