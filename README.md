@@ -17,6 +17,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - Dve micro USB auto-nabíjačky
 
 ## Postup spustenia programu v praxi
+
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
 - Rozbaliť .zip archív pomocou 7-Zip
 - Zapísať .img na micro SD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
