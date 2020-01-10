@@ -17,7 +17,7 @@ def gearDecoder(messages):
 # PID (A4, resp. 01A4) a počet bajtov (4) nájdený tu:
 # https://en.wikipedia.org/wiki/OBD-II_PIDs
 # Aj pri zaradenej rýchlosti však dostávame hodnotu 0.
-# Skúšali sme aj rôzne kombinácie hodnôt parametrov
-# (ECU.ENGINE, True)
+# Skúšali sme aj iné (kvalitnejšie) OBD skenery,
+# avšak pri nich sa program ani nespustil
 GEAR = OBDCommand("GEAR", "Transmission Actual Gear",
                   b"01A4", 4, gearDecoder, ECU.ALL, False)

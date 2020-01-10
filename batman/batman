@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Tell batman-adv which interface to use
+# Povieme BATMAN-ADV, ktoré sieťové rozhranie má používať
 sudo batctl if add wlan0
 
-# Activates the interfaces for batman-adv
+# Zapneme sieťové rozhrania
 sudo ifconfig wlan0 up
 sudo ifconfig bat0 up

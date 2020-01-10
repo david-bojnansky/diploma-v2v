@@ -78,9 +78,16 @@ class VehicleServer:
         self.gui.show(self._udpSockReceiver)
         
         
-    def stop(self, sigNum = None, csf = None):
-        self.gui.close()
-        self.udpSock.close()
+    def stop(self, sigNum = None, csf = None):        
+        try:
+            self._gui.close()
+        except Exception as e:
+            print(e, file=sys.stderr)
+        
+        try:
+            self._udpSock.close()
+        except Exception as e:
+            print(e, file=sys.stderr)
 
 
 if __name__ == "__main__":

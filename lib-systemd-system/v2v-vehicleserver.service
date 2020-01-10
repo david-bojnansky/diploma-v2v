@@ -1,5 +1,5 @@
 [Unit]
-BindTo=v2v-vehicleclient.service
+BindTo=v2v-vehicleclient.service graphical.target
 After=v2v-vehicleclient.service graphical.target
 
 [Service]

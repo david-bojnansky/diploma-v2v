@@ -1,21 +1,28 @@
+import subprocess
+import time
+
 class ObdMonitor:
-    lastUpdateAt = None
+    SERVICE_NAME = "v2v-obd2rpi.service"
     
-    def __init__(self, time, execute):
-        self.time = time
-        self.exec = execute
+    _lastUpdateAt = None
+    
+    def __init__(self, serviceName = SERVICE_NAME,
+                 t = time.time, execute = subprocess.call):
+        self._serviceName = serviceName
+        self._time = t
+        self._exec = execute
         
     
     def updateTime(self, _ = None):
-        self.lastUpdateAt = self.time()
+        self._lastUpdateAt = self._time()
         
     
     def isAlive(self):
-        if (self.time() > self.lastUpdateAt + 10):
-            self.exec([
+        if (self._time() > self._lastUpdateAt + 10):
+            self._exec([
                 "/bin/systemctl",
                 "restart",
-                "v2v-obd2rpi.service",
+                self._serviceName,
             ])
             
             return False
