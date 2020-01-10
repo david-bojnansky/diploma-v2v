@@ -1,4 +1,6 @@
-# V2V komunikácia použitím minipočítača Raspberry Pi - Diplomová práca
+# V2V komunikácia použitím minipočítača Raspberry Pi
+
+Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Postup spustenia v praxi
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
