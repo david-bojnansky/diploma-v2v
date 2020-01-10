@@ -12,7 +12,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - USB klávesnica a USB myš
 - Veľký monitor s HDMI konektorom a HDMI kábel
 - Prenosný HDMI displej pre minipočítač s káblami
-- Dva OBD skenery, napr. [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357) (nie každý funguje s týmto programom)
+- Dva OBD skenery (nie každý funguje s týmto programom), napr. [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357)
 - Dve vozidlá s OBD konektormi
 - Dve micro USB auto-nabíjačky
 
