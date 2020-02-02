@@ -2,6 +2,15 @@
 
 Diplomová práca (c) 2020 Bojnanský Dávid
 
+## Praktické ukážky
+
+- [Playlist videí](https://www.youtube.com/playlist?list=PLTxJhgGv-fMB8rF7z0QGvksdUlAue43B_)
+- [Vozidlá idúce za sebou I.](https://youtu.be/kq7yeCqjYpg)
+- [Vozidlá idúce za sebou II.](https://youtu.be/ZFmHJJL8_uo)
+- [Dosah signálu](https://youtu.be/NyofHGUne5c)
+- [Vozidlá, kt. sa míňaujú](https://youtu.be/ac9dYk9JT6I)
+- [Automatický reštart systému](https://youtu.be/rrhvNowX0fs)
+
 ## Minimálne požiadavky
 
 - Počítač, nainštalovaný webový prehliadač a nainštalované programy [7-Zip](https://www.7-zip.org/) a [balenaEtcher](https://www.balena.io/etcher/)
