@@ -5,7 +5,7 @@ from obd.utils import bytes_to_int
 def gearDecoder(messages):
     data = messages[0].data
     
-    # Odseknúť mode a PID 
+    # Odseknúť službu a PID 
     data = data[2:]
     
     # Konvertovať bajty na číslo
