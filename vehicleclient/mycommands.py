@@ -18,6 +18,6 @@ def gearDecoder(messages):
 # https://en.wikipedia.org/wiki/OBD-II_PIDs
 # Aj pri zaradenej rýchlosti však dostávame hodnotu 0.
 # Skúšali sme aj iné (kvalitnejšie) OBD skenery,
-# avšak pri nich sa program ani nespustil
+# avšak pri nich sa aplikácia ani nespustila
 GEAR = OBDCommand("GEAR", "Transmission Actual Gear",
                   b"01A4", 4, gearDecoder, ECU.ALL, False)
