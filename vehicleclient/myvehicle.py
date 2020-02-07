@@ -113,9 +113,9 @@ class MyVehicle:
             self.actionAsText = "V konštantnom pohybe"
         
         
-    def toJson(self, forServer = False):
+    def toJson(self, forMyServer = False):
         data = {
-            "aboutMe": forServer,
+            "aboutMe": forMyServer,
             "ip": self.ip,
             "brand": self.brand,
             "model": self.model,
@@ -127,7 +127,7 @@ class MyVehicle:
             "actionAsText": self.actionAsText,
         }
         
-        if forServer:
+        if forMyServer:
             data.update({
                 "rotates": self.rotates,
                 "gear": self.gear,
@@ -136,8 +136,8 @@ class MyVehicle:
         return json.dumps(data)
     
     
-    def toEncodedJson(self, forServer = False):
-        return self.toJson(forServer).encode()
+    def toEncodedJson(self, forMyServer = False):
+        return self.toJson(forMyServer).encode()
     
     
     def echo(self, name, alt = "Zisťujem..."):
