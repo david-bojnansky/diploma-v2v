@@ -8,7 +8,6 @@ import time
 
 from myvehicle import MyVehicle
 from obdmonitor import ObdMonitor
-from obd import OBDStatus
 
 class VehicleClient:
     ALL_IP = "169.254.0.255" # Všetci v dosahu (broadcast) vrátane nás
