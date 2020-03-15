@@ -4,7 +4,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Textové dokumenty
 
--  [Diplomová práca vo formáte PDF](https://github.com/david-bojnansky/diploma-v2v/thesis/)
+-  [Diplomová práca vo formáte PDF](https://github.com/david-bojnansky/diploma-v2v/thesis/) **(doplniť odkaz)**
 
 ## Praktické ukážky
 
@@ -17,7 +17,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Minimálne požiadavky
 
-- Počítač, nainštalovaný webový prehliadač a nainštalované programy [7-Zip](https://www.7-zip.org/) a [balenaEtcher](https://www.balena.io/etcher/)
+- Počítač, nainštalovaný webový prehliadač a nainštalované programy typu [7-Zip](https://www.7-zip.org/) a [balenaEtcher](https://www.balena.io/etcher/)
 - Sieťový LAN kábel napojený do routra s prístupom na internet
 - Dva minipočítače Raspberry Pi 3 Model B
 - Dve pamäťové microSD karty o veľkosti 8 GB (s adaptérom pre počítač)
@@ -25,16 +25,16 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 - USB klávesnica a USB myš
 - Veľký monitor s HDMI vstupom a HDMI kábel
 - Prenosný HDMI displej pre minipočítač s potrebnými káblami
-- Dva OBD-II skenery (napríklad [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357))
+- Dva OBD-II skenery ako napríklad [OBD Scan](https://www.ebay.com/itm/Vgate-ELM327-Bluetooth-OBD2-V2-1-Scanner-Car-Auto-Diagnostic-Adapter-Scan-Tool/123778992357)
 - Dve vozidlá s OBD-II konektormi
 - Dva microUSB napájacie adaptéry kompatibilné so zapaľovaním vo vozidle
 
-## Postup spustenia programu v praxi
+## Postup spustenia V2V systému
 
 - Stiahnúť .zip archív [Raspbian Buster with desktop and recommended software](https://www.raspberrypi.org/downloads/raspbian/)
 - Rozbaliť .zip archív pomocou 7-Zip
 - Zapísať .img na pamäťovú microSD kartu podľa oficiálneho [návodu](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-- Zapnúť minipočítač (vrátane napojenia LAN kábla a pripojených periférnych zariadení)
+- Zapnúť minipočítač (vrátane pripojeného LAN kábla a pripojených periférnych zariadení)
 - Preklikať sa inštalačnými nastaveniami pri úplne prvom spustení
 - Spustiť príkazový riadok
 - Zmeniť názov počítača (napríklad na rpi-1, rpi-2, ...): `sudo nano /etc/hostname`
