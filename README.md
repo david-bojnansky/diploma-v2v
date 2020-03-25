@@ -4,7 +4,7 @@ Diplomová práca (c) 2020 Bojnanský Dávid
 
 ## Textové dokumenty
 
--  [Diplomová práca vo formáte PDF](https://github.com/david-bojnansky/diploma-v2v/thesis/) **(doplniť odkaz)**
+-  [Diplomová práca vo formáte PDF](https://github.com/david-bojnansky/diploma-v2v/blob/master/thesis/V2V%20komunik%C3%A1cia%20pou%C5%BEit%C3%ADm%20minipo%C4%8D%C3%ADta%C4%8Da%20Raspberry%20Pi.pdf)
 
 ## Praktické ukážky
 
